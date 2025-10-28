@@ -1,22 +1,26 @@
 from tkinter import *
+
 root = Tk()
-root.title("First App")
+root.title("Find & Replace")
 root.geometry("400x200")
 
-l = Label(root, text="Hello !",
-          fg="red",
-          bg="#FFFFFF",
-          font=('Roboto',25))
-l.pack()
+Label(root, text="Find:").grid(row=0, column=0, sticky=W, padx=5, pady=5)
+Entry(root).grid(row=0, column=1, padx=5, pady=5)
+Button(root, text="Find").grid(row=0, column=2, padx=5, pady=5)
+Button(root, text="Find All").grid(row=0, column=3, padx=5, pady=5)
 
-l = Label(root, text="My name is Ralph",
-          fg="Blue",
-          bg="#FFFFFF",
-          font=('Roboto',25))
-l.pack()
+Label(root, text="Replace:").grid(row=1, column=0, sticky=W, padx=5, pady=5)
+Entry(root).grid(row=1, column=1, padx=5, pady=5)
+Button(root, text="Replace").grid(row=1, column=2, padx=5, pady=5)
+Button(root, text="Replace All").grid(row=1, column=3, padx=5, pady=5)
 
-l2 = Label(root, text="\n I am studying in Bath Spa University Academic center RAK \n I am enrolled in BSC CC Year 2, Group - C",
-           fg="#FFFFFF", bg="#000000", font=('Roboto',8))
-l2.pack()
+Checkbutton(root, text="Match whole word only").grid(row=2, column=0, columnspan=2, sticky=W, padx=5)
+Checkbutton(root, text="Match Case").grid(row=3, column=0, columnspan=2, sticky=W, padx=5)
+Checkbutton(root, text="Wrap around").grid(row=4, column=0, columnspan=2, sticky=W, padx=5)
+
+Label(root, text="Direction:").grid(row=2, column=2, sticky=W, padx=5)
+Radiobutton(root, text="Up", value=1).grid(row=3, column=2, sticky=W, padx=5)
+Radiobutton(root, text="Down", value=2).grid(row=4, column=2, sticky=W, padx=5)
 
 root.mainloop()
+
