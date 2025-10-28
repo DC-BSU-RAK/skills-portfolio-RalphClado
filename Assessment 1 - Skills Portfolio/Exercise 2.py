@@ -1,27 +1,24 @@
 from tkinter import *
-import tkinter
 
 root = Tk()
-Label(root, text="Check Buttons to select multiple options").pack(anchor = W)
+root.title("Find & Replace")
+root.geometry("400x200")
 
-C1 = Checkbutton(root, text = "Gaming")
-C1.pack(anchor = W)
+Label(root, text="Find:").grid(row=0, column=0, sticky=W, padx=5, pady=5)
+Entry(root).grid(row=0, column=1, padx=5, pady=5)
+Button(root, text="Find").grid(row=0, column=2, padx=5, pady=5)
+Button(root, text="Find All").grid(row=0, column=3, padx=5, pady=5)
 
-C2 = Checkbutton(root, text = "Video Editing")
-C2.pack(anchor = W)
+Label(root, text="Replace:").grid(row=1, column=0, sticky=W, padx=5, pady=5)
+Entry(root).grid(row=1, column=1, padx=5, pady=5)
+Button(root, text="Replace All").grid(row=1, column=2, columnspan=2, padx=5, pady=5)
 
-C3 = Checkbutton(root, text = "Web Development")
-C3.pack(anchor = W)
+Checkbutton(root, text="Match whole word only").grid(row=2, column=0, columnspan=2, sticky=W, padx=5)
+Checkbutton(root, text="Match Case").grid(row=3, column=0, columnspan=2, sticky=W, padx=5)
+Checkbutton(root, text="Wrap around").grid(row=4, column=0, columnspan=2, sticky=W, padx=5)
 
-Label(root, text="Radio Buttons to select one option from multiple options").pack(anchor = W)
-
-R1 = Radiobutton(root, text="Cooking", value=1)
-R1.pack(anchor = W)
-
-R2 = Radiobutton(root, text="Full Stack Developer", value=2)
-R2.pack(anchor = W)
-
-R3 = Radiobutton(root, text="Game Designer", value=3)
-R3.pack(anchor = W)
+Label(root, text="Direction:").grid(row=2, column=2, sticky=W, padx=5)
+Radiobutton(root, text="Up", value=1).grid(row=3, column=2, sticky=W, padx=5)
+Radiobutton(root, text="Down", value=2).grid(row=4, column=2, sticky=W, padx=5)
 
 root.mainloop()
