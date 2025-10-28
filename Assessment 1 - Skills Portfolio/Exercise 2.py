@@ -1,27 +1,41 @@
 from tkinter import *
-import tkinter
+import random
+
+def load_jokes():
+    with open("randomJokes.txt", "r") as file:
+        lines = file.readlines()
+    jokes = [line.strip().split("?") for line in lines if "?" in line]
+    return jokes
+
+def show_joke():
+    global current_joke
+    current_joke = random.choice(jokes)
+    setup_label.config(text=current_joke[0] + "?")
+    punchline_label.config(text="") 
+
+def show_punchline():
+    if current_joke:
+        punchline_label.config(text=current_joke[1])
+
+def quit_app():
+    root.destroy()
 
 root = Tk()
-Label(root, text="Check Buttons to select multiple options").pack(anchor = W)
+root.title("Alexa Joke Assistant")
+root.geometry("400x200")
 
-C1 = Checkbutton(root, text = "Gaming")
-C1.pack(anchor = W)
+jokes = load_jokes()
+current_joke = None
 
-C2 = Checkbutton(root, text = "Video Editing")
-C2.pack(anchor = W)
+setup_label = Label(root, text="", font=("Arial", 12), wraplength=380)
+setup_label.pack(pady=10)
 
-C3 = Checkbutton(root, text = "Web Development")
-C3.pack(anchor = W)
+punchline_label = Label(root, text="", font=("Arial", 10), fg="blue", wraplength=380)
+punchline_label.pack(pady=5)
 
-Label(root, text="Radio Buttons to select one option from multiple options").pack(anchor = W)
-
-R1 = Radiobutton(root, text="Graphic Designer", value=1)
-R1.pack(anchor = W)
-
-R2 = Radiobutton(root, text="Full Stack Developer", value=2)
-R2.pack(anchor = W)
-
-R3 = Radiobutton(root, text="Web Developer", value=3)
-R3.pack(anchor = W)
+Button(root, text="Alexa tell me a Joke", command=show_joke).pack(pady=5)
+Button(root, text="Show Punchline", command=show_punchline).pack(pady=5)
+Button(root, text="Next Joke", command=show_joke).pack(pady=5)
+Button(root, text="Quit", command=quit_app).pack(pady=5)
 
 root.mainloop()
